@@ -154,8 +154,22 @@ public class BST<T> {
 		return p;
 	}
 	public int countNodesIn(int k) {
-		throw new UnsupportedOperationException("Not supported yet.");
-		// Write the member method countNodesIn member of the class BST that returns the number of nodes in the subtree rooted at
-		// the node with key k. Assume that k exists. You are not allowed to call any of the BST methods.
-	}
+		BSTNode<T> b= root;
+		while(b!=null){
+			if(b.key<k)
+				b=b.right;
+			else if(b.key>k)
+				b=b.left;
+			else
+				return countNode(b);
+		}
+		return 0;
+		
+	}// counting the root
+	private int countNode(BSTNode<T> n){
+		if(n==null)
+			return 0;
+		
+		return countNode(n.left)+countNode(n.right)+1;
+		}
 }
